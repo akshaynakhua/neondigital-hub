@@ -1,0 +1,32 @@
+/*
+ * Sign-in, registration, Connect, legal and not-found pages only. Loaded after app.css by nw_head()
+ * when a template asks for 'dark', never on the signed-in app or on business-branded public pages.
+ * It only retunes the app's dark tokens to the public website's palette.
+ */
+html[data-theme="dark"] {
+	--bg: #15131B; --surface: #201C29; --surface-2: #292336; --surface-3: #332C42;
+	--border: #2F2A3B; --border-2: #443C55; --text: #F8F7FA; --text-2: #D9D5E0; --muted: #A9A2B5;
+	--accent: #9875F5; --accent-2: #AB8FF8; --accent-text: #B9A0FF; --accent-soft: #292336; --on-accent: #15131B;
+}
+body { font-size: 15px; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { color: var(--text); }
+.btn { transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
+.btn-primary { font-weight: 600; }
+.nw-auth { background: radial-gradient(800px 420px at 50% -8%, rgba(152, 117, 245, .12), transparent 70%), var(--bg); padding: 24px 16px; }
+.auth-card { max-width: 440px; padding: 32px; border-radius: 16px; }
+.auth-card h1 { font-size: 26px; letter-spacing: -.02em; margin-bottom: 18px; }
+.auth-card input:not([type=checkbox]):not([type=radio]) { background: var(--bg); }
+.auth-home { display: inline-block; }
+.lp-head, .lp-foot { color: var(--muted); }
+.lp-head { max-width: 760px; padding: calc(20px + var(--safe-t)) 18px 16px; }
+.lp-head .nw-logo { display: block; width: 76px; }
+.lp-foot a { color: var(--muted); }
+.lp-foot a:hover { color: var(--text); }
+.legal-body { border-radius: 16px; }
+
+/* Legal pages are printable: paper stays white whatever the screen theme. */
+@media print {
+	html[data-theme="dark"] { --bg: #fff; --surface: #fff; --surface-2: #fff; --border: #ccc; --border-2: #ccc; --text: #000; --text-2: #000; --muted: #333; --accent-text: #000; --accent-soft: #f4f4f4; }
+	.nw-auth { background: #fff; }
+	.legal-body { border: 0; padding: 0; }
+}
